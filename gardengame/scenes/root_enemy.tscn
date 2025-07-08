@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://brbsxdr0wi7su"]
+
+[ext_resource type="Texture2D" uid="uid://6h6cbd46fx0k" path="res://textures/soggy_cat_enemy.png" id="1_1smr3"]
+[ext_resource type="Script" uid="uid://bbijhmxta4uoc" path="res://scenes/enemy.gd" id="1_pgons"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o2sxd"]
+radius = 20.0
+
+[node name="RootEnemy" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(10, 10)
+script = ExtResource("1_pgons")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_o2sxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_1smr3")
