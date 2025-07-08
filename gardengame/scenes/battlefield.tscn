@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxtkxaebc3pmy"]
+
+[ext_resource type="PackedScene" uid="uid://cpre4pnoft1a7" path="res://scenes/player.tscn" id="1_hy033"]
+[ext_resource type="PackedScene" uid="uid://dfe7stefx36it" path="res://scenes/centerpiece.tscn" id="2_4y0t7"]
+[ext_resource type="Script" uid="uid://c2qlhwb2l2vgi" path="res://board.gd" id="3_fxwnf"]
+[ext_resource type="Script" uid="uid://dgtmrmxiqn7tt" path="res://scenes/gameManager.gd" id="4_21s54"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_hy033")]
+position = Vector2(40, 40)
+
+[node name="Centerpiece" parent="." instance=ExtResource("2_4y0t7")]
+position = Vector2(200, 200)
+
+[node name="Board" type="Node2D" parent="."]
+script = ExtResource("3_fxwnf")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("4_21s54")
