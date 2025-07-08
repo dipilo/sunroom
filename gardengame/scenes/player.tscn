@@ -9,12 +9,12 @@ radius = 20.0
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(20, 20)
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_sh265")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.15625, 0.15625)
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D"]
+scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("2_i3pqv")

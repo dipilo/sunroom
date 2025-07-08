@@ -6,9 +6,10 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(9.99999, 9.99999)
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
 texture = ExtResource("1_xvps5")
 
 [node name="center" type="Node2D" parent="."]
-position = Vector2(11, 11)
+position = Vector2(20, 20)
 scale = Vector2(0.0628572, 0.0628572)
