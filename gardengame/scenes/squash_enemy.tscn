@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://3u1jf7dm1tan"]
+
+[ext_resource type="PackedScene" uid="uid://brbsxdr0wi7su" path="res://scenes/root_enemy.tscn" id="1_byknc"]
+[ext_resource type="Script" uid="uid://isyvbh4h71j3" path="res://scenes/stompable_enemy.gd" id="2_n0fh7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0fh7"]
+
+[node name="stomp_enemy" instance=ExtResource("1_byknc")]
+
+[node name="CharacterBody2D" parent="." index="0"]
+script = ExtResource("2_n0fh7")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" index="1"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D" index="0"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_n0fh7")
+
+[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_collisioned"]

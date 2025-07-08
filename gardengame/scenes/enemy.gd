@@ -12,7 +12,7 @@ func _ready() ->void:
 		game_manager=GlobalScript.gamemanger
 
 func _update() ->void:
-	var target_direction = pathfindToVector(Vector2(10,10))
+	var target_direction = pathfindToVector(Vector2(6,6))
 	move_to(location+target_direction)
 func pathfindToVector(target: Vector2) -> Vector2:
 	
@@ -39,3 +39,7 @@ func move_to(new_location: Vector2):
 	location = new_location
 func animate():
 	print("moved")
+func die():
+	game_manager.enemyList.erase(self)
+	queue_free()
+	

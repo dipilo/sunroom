@@ -7,9 +7,9 @@ func _ready():
 	GlobalScript.gamemanger.board = self
 	game_manager=GlobalScript.gamemanger
 	GlobalScript.board = self
-	for i in range(21):
+	for i in range(13):
 		grid.append([])
-		for j in range(21):
+		for j in range(13):
 			var grid_instance = grid_box.instantiate()
 			grid_instance.position = Vector2(i*40,j*40)
 			grid[i].append(grid_instance)

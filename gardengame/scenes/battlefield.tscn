@@ -4,15 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://dfe7stefx36it" path="res://scenes/centerpiece.tscn" id="2_4y0t7"]
 [ext_resource type="Script" uid="uid://c2qlhwb2l2vgi" path="res://board.gd" id="3_fxwnf"]
 [ext_resource type="Script" uid="uid://dgtmrmxiqn7tt" path="res://scenes/gameManager.gd" id="4_21s54"]
-[ext_resource type="PackedScene" uid="uid://brbsxdr0wi7su" path="res://scenes/root_enemy.tscn" id="5_jsyt3"]
+[ext_resource type="PackedScene" uid="uid://3u1jf7dm1tan" path="res://scenes/squash_enemy.tscn" id="5_jsyt3"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_hy033")]
-position = Vector2(680, 140)
+position = Vector2(80, 200)
 
 [node name="Centerpiece" parent="." instance=ExtResource("2_4y0t7")]
-position = Vector2(400, 400)
+position = Vector2(240, 240)
 
 [node name="Board" type="Node2D" parent="."]
 script = ExtResource("3_fxwnf")
@@ -24,7 +24,6 @@ script = ExtResource("4_21s54")
 wait_time = 0.75
 autostart = true
 
-[node name="RootEnemy" parent="." instance=ExtResource("5_jsyt3")]
-position = Vector2(240, 100)
+[node name="stomp_enemy" parent="." instance=ExtResource("5_jsyt3")]
 
 [connection signal="timeout" from="manager/Timer" to="manager" method="_game_loop"]
