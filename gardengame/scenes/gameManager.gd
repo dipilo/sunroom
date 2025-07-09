@@ -1,7 +1,16 @@
 extends Node2D
 @export var enemy_classes = []
-@export var spawn_speed = 3
+@export var spawn_speed = 1
 @export var enemy_speed_mod = 1
+var diag_enemy_spawns = [Vector2(64,-20),
+Vector2(466,-20),
+Vector2(64,540),
+Vector2(466,540),
+Vector2(-20,64),
+Vector2(-20,466),
+Vector2(540,64),
+Vector2(540,466),
+]
 var enemyList = []
 var board
 func _ready() -> void:
@@ -13,8 +22,8 @@ func _ready() -> void:
 	$spawnTimer.start()
 func _game_loop() -> void:
 	for enemy in enemyList:
-		enemy._update()
-
+		if is_instance_valid(enemy):
+			enemy._update()
 
 func _spawn_timer_timeout() -> void:
 	await get_tree().create_timer(randf()).timeout #wait for between 0 and 0.99999 seconds, to add some randomness
@@ -28,6 +37,6 @@ func _spawn_timer_timeout() -> void:
 		else:
 			check_tile = board.edge_tiles.pick_random()
 	var guy_instance = preload("res://scenes/squash_enemy.tscn").instantiate()
-	#TODO MAKE GUY SPAWNNN
+	guy_instance.global_position = diag_enemy_spawns.pick_random()
 	add_child(guy_instance)
 	enemyList.append(guy_instance)
