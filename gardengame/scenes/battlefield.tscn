@@ -20,10 +20,14 @@ script = ExtResource("3_fxwnf")
 [node name="manager" type="Node2D" parent="."]
 script = ExtResource("4_21s54")
 
-[node name="Timer" type="Timer" parent="manager"]
+[node name="gameTimer" type="Timer" parent="manager"]
 wait_time = 0.75
 autostart = true
 
-[node name="stomp_enemy" parent="." instance=ExtResource("5_jsyt3")]
+[node name="spawnTimer" type="Timer" parent="manager"]
 
-[connection signal="timeout" from="manager/Timer" to="manager" method="_game_loop"]
+[node name="squash_enemy" parent="." instance=ExtResource("5_jsyt3")]
+position = Vector2(128, 88)
+
+[connection signal="timeout" from="manager/gameTimer" to="manager" method="_game_loop"]
+[connection signal="timeout" from="manager/spawnTimer" to="manager" method="_spawn_timer_timeout"]
