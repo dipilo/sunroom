@@ -13,10 +13,10 @@ Vector2(540,466),
 ]
 var enemyList = []
 var board
+var centerpiece
 func _ready() -> void:
 	GlobalScript.gamemanger = self
 	await get_tree().process_frame
-	#await get_tree().process_frame
 	board = GlobalScript.board
 	$spawnTimer.wait_time = spawn_speed
 	$spawnTimer.start()
@@ -40,3 +40,7 @@ func _spawn_timer_timeout() -> void:
 	guy_instance.global_position = diag_enemy_spawns.pick_random()
 	add_child(guy_instance)
 	enemyList.append(guy_instance)
+
+func _damage_centerpiece(amt: int):
+	if not centerpiece == null:
+		centerpiece._deal_damage(amt)
