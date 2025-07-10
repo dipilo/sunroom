@@ -3,13 +3,19 @@ var center_node = self
 var previous_angle = 0.0
 var accumulated_angle = 0.0
 var full_circle_threshold = 2 * PI
-
+var time_to_chill = 5
+var time_before_chill = 5
 func _init():
 	movement_chance = 0.3
 func _ready():
 	super._ready()
 	previous_angle = get_current_angle()
 	
+func _update():
+	if time_before_chill > 0:
+		time_before_chill-=1
+		super._update()
+		
 
 func _physics_process(delta):
 	super._physics_process(delta)
