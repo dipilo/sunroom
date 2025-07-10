@@ -1,7 +1,10 @@
 extends CharacterBody2D
-
+var game_manager
 @export var speed = 200
-
+func _ready():
+	await get_tree().process_frame
+	GlobalScript.gamemanger.player = self
+	game_manager = GlobalScript.gamemanger 
 func get_input():
 	var input_direction = Input.get_vector("direction_left", "direction_right", "direction_up", "direction_down")
 	velocity = input_direction * speed

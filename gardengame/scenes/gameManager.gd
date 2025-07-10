@@ -1,5 +1,5 @@
 extends Node2D
-@export var enemy_classes = []
+@export var enemy_classes = ["res://scenes/squash_enemy.tscn","res://scenes/circle_enemy.tscn"]
 @export var spawn_speed = 1
 @export var enemy_speed_mod = 1
 var diag_enemy_spawns = [Vector2(64,-20),
@@ -14,6 +14,7 @@ Vector2(540,466),
 var enemyList = []
 var board
 var centerpiece
+var player
 func _ready() -> void:
 	GlobalScript.gamemanger = self
 	await get_tree().process_frame
@@ -36,7 +37,7 @@ func _spawn_timer_timeout() -> void:
 			spawn_tile = check_tile
 		else:
 			check_tile = board.edge_tiles.pick_random()
-	var guy_instance = preload("res://scenes/squash_enemy.tscn").instantiate()
+	var guy_instance = load(enemy_classes.pick_random()).instantiate()
 	guy_instance.global_position = diag_enemy_spawns.pick_random()
 	add_child(guy_instance)
 	enemyList.append(guy_instance)
