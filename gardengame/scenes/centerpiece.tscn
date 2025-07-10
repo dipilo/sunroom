@@ -23,3 +23,5 @@ shape = SubResource("RectangleShape2D_rpi3w")
 position = Vector2(20, 20)
 scale = Vector2(0.025, 0.025)
 texture = ExtResource("1_s0tf1")
+
+[node name="center" type="Node2D" parent="Sprite2D"]

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdbid5wim5qql"]
-
-[ext_resource type="Script" uid="uid://b6xgno027bq8q" path="res://scenes/z_particle.gd" id="1_kx8wh"]
-
-[node name="ZParticle" type="Node2D"]
-script = ExtResource("1_kx8wh")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
