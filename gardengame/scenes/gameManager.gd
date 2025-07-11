@@ -19,6 +19,7 @@ var enemyList = []
 var board
 var centerpiece
 var player
+var shreader
 func _ready() -> void:
 	GlobalScript.gamemanger = self
 	await get_tree().process_frame
@@ -33,24 +34,18 @@ func _game_loop() -> void:
 
 func _spawn_timer_timeout() -> void:
 	await get_tree().create_timer(randf()).timeout #wait for between 0 and 0.99999 seconds, to add some randomness
-	var hasFoundValidSpawnTile = false
-	var spawn_tile
-	var check_tile = board.edge_tiles.pick_random()
-	while not hasFoundValidSpawnTile:
-		if not check_tile.occupied:
-			hasFoundValidSpawnTile = true
-			spawn_tile = check_tile
-		else:
-			check_tile = board.edge_tiles.pick_random()
+
 	if curr_enemy_waves.size() == 0:
 		setup_next_wave()
-	var count = 1
+	
 	var curr_guy = curr_enemy_waves.get(0)
+	curr_enemy_waves.remove_at(0)
+	
+	var count = 1
 	if curr_guy == "res://scenes/squash_enemy.tscn":
-		count = int(randf()*3+3)
+		count = int(randf()*2+3)
 	for i in count:
 		var guy_instance = load(curr_guy).instantiate()
-		curr_enemy_waves.remove_at(0)
 		guy_instance.global_position = diag_enemy_spawns.pick_random()
 		add_child(guy_instance)
 		enemyList.append(guy_instance)
@@ -66,5 +61,5 @@ func setup_next_wave():
 		for i in count:
 			curr_enemy_waves.append(key)
 	curr_enemy_waves.shuffle()
-	$spawnTimer.wait_time/=1.1
+	$spawnTimer.wait_time*=0.98
 	

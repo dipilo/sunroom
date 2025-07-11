@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpre4pnoft1a7"]
+[gd_scene load_steps=6 format=3 uid="uid://cpre4pnoft1a7"]
 
 [ext_resource type="Script" uid="uid://028cuny43ms" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dgldqqqph5eoe" path="res://icon.svg" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://ryiamtb4fuo1" path="res://textures/item_textures/Paper_JE2_BE2.webp" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sh265"]
 radius = 20.0
@@ -27,3 +28,9 @@ collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/PlayerArea"]
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="paper" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(1.2815e-06, -20)
+scale = Vector2(0.0555556, 0.0555556)
+texture = ExtResource("3_qhqgy")

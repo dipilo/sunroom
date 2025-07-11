@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxk1jpf28c0hu"]
 
 [ext_resource type="Script" uid="uid://ujc56myh608b" path="res://scenes/gridbox.gd" id="1_7w8xf"]
-[ext_resource type="Texture2D" uid="uid://drckquv8oynf8" path="res://textures/grid_better.png" id="1_xvps5"]
+[ext_resource type="Texture2D" uid="uid://c5s0t84378riw" path="res://textures/spacebg.png" id="2_7w8xf"]
 
 [node name="Gridbox" type="Node2D"]
 script = ExtResource("1_7w8xf")
@@ -9,8 +9,7 @@ script = ExtResource("1_7w8xf")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(20, 20)
-scale = Vector2(2, 2)
-texture = ExtResource("1_xvps5")
+texture = ExtResource("2_7w8xf")
 
 [node name="center" type="Node2D" parent="."]
 position = Vector2(20, 20)

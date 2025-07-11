@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var game_manager
 @export var speed = 200
+var has_paper = false
 func _ready():
 	await get_tree().process_frame
 	GlobalScript.gamemanger.player = self
@@ -12,4 +13,6 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
-	
+func _paper(new: bool):
+	has_paper = new
+	$paper.visible = new

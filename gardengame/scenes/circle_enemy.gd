@@ -6,7 +6,7 @@ var full_circle_threshold = 2 * PI
 var time_to_chill = 5
 var time_before_chill = 5
 func _init():
-	movement_chance = 0.3
+	movement_chance = 0.5
 func _ready():
 	super._ready()
 	previous_angle = get_current_angle()
