@@ -1,6 +1,10 @@
 extends Node2D
-@export var enemy_classes = ["res://scenes/squash_enemy.tscn","res://scenes/circle_enemy.tscn"]
-@export var spawn_speed = 1
+@export var default_enemy_waves = { #key is number of times the enemy should spawn each "cycle"
+	"res://scenes/squash_enemy.tscn" : 2,
+	"res://scenes/circle_enemy.tscn" : 1
+}
+var curr_enemy_waves = []
+@export var wave_cooldown = 5.0
 @export var enemy_speed_mod = 1
 var diag_enemy_spawns = [Vector2(64,-20),
 Vector2(466,-20),
@@ -19,7 +23,8 @@ func _ready() -> void:
 	GlobalScript.gamemanger = self
 	await get_tree().process_frame
 	board = GlobalScript.board
-	$spawnTimer.wait_time = spawn_speed
+	setup_next_wave()
+	$spawnTimer.wait_time = wave_cooldown
 	$spawnTimer.start()
 func _game_loop() -> void:
 	for enemy in enemyList:
@@ -37,11 +42,29 @@ func _spawn_timer_timeout() -> void:
 			spawn_tile = check_tile
 		else:
 			check_tile = board.edge_tiles.pick_random()
-	var guy_instance = load(enemy_classes.pick_random()).instantiate()
-	guy_instance.global_position = diag_enemy_spawns.pick_random()
-	add_child(guy_instance)
-	enemyList.append(guy_instance)
+	if curr_enemy_waves.size() == 0:
+		setup_next_wave()
+	var count = 1
+	var curr_guy = curr_enemy_waves.get(0)
+	if curr_guy == "res://scenes/squash_enemy.tscn":
+		count = int(randf()*3+3)
+	for i in count:
+		var guy_instance = load(curr_guy).instantiate()
+		curr_enemy_waves.remove_at(0)
+		guy_instance.global_position = diag_enemy_spawns.pick_random()
+		add_child(guy_instance)
+		enemyList.append(guy_instance)
 
 func _damage_centerpiece(amt: int):
 	if not centerpiece == null:
 		centerpiece._deal_damage(amt)
+
+func setup_next_wave():
+	curr_enemy_waves = []
+	for key in default_enemy_waves.keys():
+		var count = int(default_enemy_waves[key])
+		for i in count:
+			curr_enemy_waves.append(key)
+	curr_enemy_waves.shuffle()
+	$spawnTimer.wait_time/=1.1
+	
