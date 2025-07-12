@@ -3,6 +3,7 @@ extends Node2D
 	"res://scenes/squash_enemy.tscn" : 2,
 	"res://scenes/circle_enemy.tscn" : 1
 }
+@export var difficulty = 1 #general difficulty tweaking
 var curr_enemy_waves = []
 @export var wave_cooldown = 5.0
 @export var enemy_speed_mod = 1
@@ -43,7 +44,7 @@ func _spawn_timer_timeout() -> void:
 	
 	var count = 1
 	if curr_guy == "res://scenes/squash_enemy.tscn":
-		count = int(randf()*2+3)
+		count = int(randf()*2+2+difficulty)
 	for i in count:
 		var guy_instance = load(curr_guy).instantiate()
 		guy_instance.global_position = diag_enemy_spawns.pick_random()

@@ -9,6 +9,5 @@ func _deal_damage(amt: int):
 	health -= amt
 	print(health)
 	if health == 0:
-		#crash the game, THIS IS A DEV FEATUREEEE
-		var a = null
-		a.kill()
+		GlobalScript.game_state = 3
+		get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")

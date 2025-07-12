@@ -1,13 +1,64 @@
-[gd_scene load_steps=4 format=3 uid="uid://dei7pqg3hxbde"]
+[gd_scene load_steps=9 format=3 uid="uid://dei7pqg3hxbde"]
 
 [ext_resource type="PackedScene" uid="uid://brbsxdr0wi7su" path="res://scenes/root_enemy.tscn" id="1_507hq"]
 [ext_resource type="Script" uid="uid://c61mie7bm0ugq" path="res://scenes/circle_enemy.gd" id="2_ayal1"]
 [ext_resource type="Texture2D" uid="uid://ouept6spvnm" path="res://textures/butter_dog.png" id="3_17o3q"]
+[ext_resource type="Texture2D" uid="uid://5llv6xy2pyx1" path="res://textures/eyeball_textures/eyeball yall call.png" id="4_vqn46"]
+[ext_resource type="Texture2D" uid="uid://d0jvhrvsbvaca" path="res://textures/eyeball_textures/eyeball yall tall.png" id="5_86o8v"]
+[ext_resource type="Texture2D" uid="uid://d2p2e2cwgccwv" path="res://textures/eyeball_textures/the not pupil tghe other inner part of the eeye i cant name.png" id="6_86o8v"]
+[ext_resource type="Texture2D" uid="uid://7jw3y43yqbka" path="res://textures/eyeball_textures/the pupil yall.png" id="7_b6cm3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17o3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vqn46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_86o8v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vqn46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_86o8v")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="circle_enemy" instance=ExtResource("1_507hq")]
 script = ExtResource("2_ayal1")
 
 [node name="Sprite2D" parent="CollisionShape2D" index="0"]
+visible = false
 position = Vector2(9.53674e-07, -9.53674e-07)
 scale = Vector2(1, 1)
 texture = ExtResource("3_17o3q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" index="1"]
+z_index = 3
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.833333, 0.833333)
+sprite_frames = SubResource("SpriteFrames_17o3q")
+animation = &"walk"
+frame = 1
+frame_progress = 0.710554
+
+[node name="Sprite2D2" type="Sprite2D" parent="CollisionShape2D" index="2"]
+z_index = 1
+position = Vector2(1.43051e-06, 0)
+scale = Vector2(1.04167, 0.833333)
+texture = ExtResource("6_86o8v")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CollisionShape2D" index="3"]
+z_index = 1
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.833333, 0.833333)
+texture = ExtResource("7_b6cm3")

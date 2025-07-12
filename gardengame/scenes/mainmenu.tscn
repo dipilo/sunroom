@@ -13,9 +13,17 @@ script = ExtResource("1_5mbse")
 
 [node name="lvl1button" type="Button" parent="."]
 layout_mode = 0
-offset_top = 160.0
-offset_right = 98.0
-offset_bottom = 191.0
+offset_left = 200.0
+offset_top = 260.0
+offset_right = 300.0
+offset_bottom = 291.0
 text = "Play Level 1"
+
+[node name="game status" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 160.0
+offset_right = 340.0
+offset_bottom = 200.0
 
 [connection signal="button_down" from="lvl1button" to="." method="_enter_lvl1"]
