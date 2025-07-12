@@ -23,7 +23,8 @@ func _physics_process(delta):
 	var delta_angle = wrapf(current_angle - previous_angle, -PI, PI)
 	accumulated_angle += delta_angle
 	previous_angle = current_angle
-
+	$CollisionShape2D/Node2D/Sprite2D3.position = (game_manager.player.global_position - $CollisionShape2D/Node2D.global_position ).normalized()*2
+	game_manager.player.global_position
 	if abs(accumulated_angle) >= full_circle_threshold:
 		die()
 		accumulated_angle = 0.0

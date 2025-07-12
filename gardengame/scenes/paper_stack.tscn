@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmbs0nlgevjcy"]
+
+[ext_resource type="Script" uid="uid://1a0gu7f1635y" path="res://scenes/paper_stack.gd" id="1_7js4w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixbtv"]
+radius = 10.2564
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lwkd3"]
+size = Vector2(40, 40)
+
+[node name="Paper_Stack" type="Node2D"]
+script = ExtResource("1_7js4w")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.5, 1.5)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.3, 1.3)
+shape = SubResource("CircleShape2D_ixbtv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_lwkd3")
+
+[connection signal="area_entered" from="Area2D" to="." method="_paper_stack_collided"]
