@@ -34,7 +34,6 @@ animations = [{
 script = ExtResource("1_dd4i2")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(10, 10)
 scale = Vector2(1.5, 1.5)
 collision_layer = 0
 collision_mask = 4
@@ -44,7 +43,7 @@ scale = Vector2(1.3, 1.3)
 shape = SubResource("CircleShape2D_ixbtv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(10, 10)
+position = Vector2(3.38813e-21, 3.38813e-21)
 scale = Vector2(0.625, 0.625)
 sprite_frames = SubResource("SpriteFrames_lwkd3")
 animation = &"idle"
