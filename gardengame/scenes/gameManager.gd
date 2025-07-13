@@ -3,10 +3,14 @@ extends Node2D
 	"res://scenes/squash_enemy.tscn" : 2,
 	"res://scenes/circle_enemy.tscn" : 1
 }
+@export var big_guy_spawns = [
+	'res://scenes/root_big_guy.tscn',
+]
 @export var difficulty = 1 #general difficulty tweaking
 var curr_enemy_waves = []
 @export var wave_cooldown = 5.0
 @export var enemy_speed_mod = 1
+@export var big_guy_spawn_time = 30
 var diag_enemy_spawns = [Vector2(64,-20),
 Vector2(466,-20),
 Vector2(64,540),
@@ -64,3 +68,7 @@ func setup_next_wave():
 	curr_enemy_waves.shuffle()
 	$spawnTimer.wait_time*=0.98
 	
+
+
+func _big_guy_timer_timeout() -> void:
+	big_guy_spawns.pick_random()

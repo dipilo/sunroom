@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3u1jf7dm1tan"]
+[gd_scene load_steps=12 format=3 uid="uid://3u1jf7dm1tan"]
 
 [ext_resource type="PackedScene" uid="uid://brbsxdr0wi7su" path="res://scenes/root_enemy.tscn" id="1_byknc"]
 [ext_resource type="Script" uid="uid://isyvbh4h71j3" path="res://scenes/stompable_enemy.gd" id="2_n0fh7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://uw7fvvn2xryc" path="res://textures/bunny_textures/BunnyAnim2.png" id="4_p7277"]
 [ext_resource type="Texture2D" uid="uid://yeh6tqrb7xtt" path="res://textures/bunny_textures/BunnyExplode3.png" id="5_bkeoe"]
 [ext_resource type="Texture2D" uid="uid://dcie7f2mjoypp" path="res://textures/bunny_textures/BunnyExplode4.png" id="6_yla8j"]
+[ext_resource type="Texture2D" uid="uid://cnpcyrbwxx4w2" path="res://textures/bunny_textures/BunnyStand.png" id="8_bkeoe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hli5h"]
 animations = [{
@@ -30,10 +31,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 5.0,
-"texture": ExtResource("4_kost0")
+"texture": ExtResource("4_p7277")
 }, {
 "duration": 5.0,
-"texture": ExtResource("4_p7277")
+"texture": ExtResource("8_bkeoe")
 }],
 "loop": true,
 "name": &"idle",
@@ -64,7 +65,7 @@ visible = false
 position = Vector2(-1.19209e-07, 1.19209e-07)
 scale = Vector2(0.416667, 0.416667)
 sprite_frames = SubResource("SpriteFrames_hli5h")
-animation = &"die"
+animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="." index="1"]
 collision_layer = 0

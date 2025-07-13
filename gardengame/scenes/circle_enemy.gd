@@ -12,9 +12,7 @@ func _ready():
 	previous_angle = get_current_angle()
 	
 func _update():
-	if time_before_chill > 0:
-		time_before_chill-=1
-		super._update()
+	super._update()
 		
 
 func _physics_process(delta):

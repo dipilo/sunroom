@@ -1,10 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfe7stefx36it"]
+[gd_scene load_steps=6 format=3 uid="uid://dfe7stefx36it"]
 
 [ext_resource type="Script" uid="uid://dqxqkdrlc5edc" path="res://scenes/centerpiece.gd" id="1_8r8u5"]
-[ext_resource type="Texture2D" uid="uid://c30kjbhcadwjx" path="res://textures/the-2013-undertale-unused-flowey-sprite-v0-7cwyl7p902pc1.png" id="1_s0tf1"]
+[ext_resource type="Texture2D" uid="uid://d2x822vcater0" path="res://textures/player_textures/bed1.png" id="2_lvikp"]
+[ext_resource type="Texture2D" uid="uid://dir84oph27jv2" path="res://textures/player_textures/bed2.png" id="3_4ht6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpi3w"]
 size = Vector2(80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pu2pc"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_lvikp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4ht6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Centerpiece" type="Node2D"]
 script = ExtResource("1_8r8u5")
@@ -19,9 +34,13 @@ position = Vector2(10, 10)
 scale = Vector2(0.17, 0.17)
 shape = SubResource("RectangleShape2D_rpi3w")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 24)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_pu2pc")
+autoplay = "default"
+frame_progress = 0.660477
+
+[node name="center" type="Node2D" parent="AnimatedSprite2D"]
 position = Vector2(20, 20)
 scale = Vector2(0.025, 0.025)
-texture = ExtResource("1_s0tf1")
-
-[node name="center" type="Node2D" parent="Sprite2D"]
