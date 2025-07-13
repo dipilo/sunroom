@@ -19,6 +19,7 @@ script = ExtResource("1_onrkg")
 shape = SubResource("CircleShape2D_sh265")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D"]
+z_index = 51
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("2_i3pqv")
 
@@ -31,6 +32,7 @@ shape = SubResource("RectangleShape2D_g2els")
 
 [node name="paper" type="Sprite2D" parent="CharacterBody2D"]
 visible = false
+z_index = 52
 position = Vector2(1.2815e-06, -20)
 scale = Vector2(0.0555556, 0.0555556)
 texture = ExtResource("3_qhqgy")

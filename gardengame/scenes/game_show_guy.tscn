@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1wvjpwqyi56q"]
+[gd_scene load_steps=8 format=3 uid="uid://c1wvjpwqyi56q"]
 
 [ext_resource type="Script" uid="uid://c4lll8kqh5apo" path="res://scenes/game_show_guy.gd" id="1_sbeve"]
 [ext_resource type="Texture2D" uid="uid://ct5jxirbid5at" path="res://textures/gameshow_textures/GameshowAnim1.png" id="1_spbwt"]
@@ -19,6 +19,10 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="Theme" id="Theme_ciuvd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uaos"]
+
 [node name="GameShowGuy" type="Node2D"]
 script = ExtResource("1_sbeve")
 
@@ -30,14 +34,62 @@ sprite_frames = SubResource("SpriteFrames_1uaos")
 autoplay = "default"
 frame_progress = 0.776764
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(170, 170)
+[node name="game status" type="Label" parent="AnimatedSprite2D"]
+offset_left = -20.0
+offset_top = -6.0
+offset_right = 84.0
+offset_bottom = 26.0
+theme = SubResource("Theme_ciuvd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quad_master" type="Node2D" parent="."]
+position = Vector2(100, 200)
+scale = Vector2(4.9775, 4.9775)
+
+[node name="Sprite2D" type="Sprite2D" parent="quad_master"]
+visible = false
+z_index = 5
+position = Vector2(14.0633, -6.02712)
 rotation = 0.785398
-scale = Vector2(2, 0.5)
+scale = Vector2(0.401808, 0.100452)
 texture = ExtResource("4_1uaos")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(200, 320)
+[node name="Sprite2D2" type="Sprite2D" parent="quad_master"]
+visible = false
+z_index = 5
+position = Vector2(20.0904, 24.1085)
 rotation = -0.785398
-scale = Vector2(2, 0.5)
+scale = Vector2(0.401808, 0.100452)
 texture = ExtResource("4_1uaos")
+
+[node name="Area2D" type="Area2D" parent="quad_master"]
+position = Vector2(-40.1808, 12.0542)
+rotation = 0.785398
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quad_master/Area2D"]
+shape = SubResource("RectangleShape2D_1uaos")
+
+[node name="Node2D" type="Node2D" parent="quad_master"]
+position = Vector2(32.1446, 84.3796)
+rotation = 0.785398
+scale = Vector2(5, 5)
+
+[node name="Node2D2" type="Node2D" parent="quad_master"]
+position = Vector2(32.1446, -60.2712)
+rotation = 0.785398
+scale = Vector2(5, 5)
+
+[node name="Node2D3" type="Node2D" parent="quad_master"]
+position = Vector2(104.47, 12.0542)
+rotation = 0.785398
+scale = Vector2(5, 5)
+
+[node name="Node2D4" type="Node2D" parent="quad_master"]
+position = Vector2(-40.1808, 12.0542)
+rotation = 0.785398
+scale = Vector2(5, 5)
+
+[connection signal="area_entered" from="quad_master/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="quad_master/Area2D" to="." method="_on_area_2d_area_exited"]

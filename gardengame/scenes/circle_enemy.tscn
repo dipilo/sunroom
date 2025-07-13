@@ -43,7 +43,7 @@ scale = Vector2(1, 1)
 texture = ExtResource("3_17o3q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" index="1"]
-z_index = 3
+z_index = 50
 position = Vector2(2.38419e-07, 2.38419e-07)
 scale = Vector2(0.833333, 0.833333)
 sprite_frames = SubResource("SpriteFrames_17o3q")
@@ -51,7 +51,7 @@ animation = &"walk"
 autoplay = "walk"
 
 [node name="Sprite2D2" type="Sprite2D" parent="CollisionShape2D" index="2"]
-z_index = 1
+z_index = 48
 position = Vector2(1.43051e-06, 0)
 scale = Vector2(1.04167, 0.833333)
 texture = ExtResource("6_86o8v")
@@ -59,7 +59,7 @@ texture = ExtResource("6_86o8v")
 [node name="Node2D" type="Node2D" parent="CollisionShape2D" index="3"]
 
 [node name="Sprite2D3" type="Sprite2D" parent="CollisionShape2D/Node2D" index="0"]
-z_index = 1
+z_index = 49
 position = Vector2(0, 2)
 scale = Vector2(0.833333, 0.833333)
 texture = ExtResource("7_b6cm3")
