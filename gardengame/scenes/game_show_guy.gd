@@ -27,9 +27,14 @@ func play_round():
 	$quad_master/Sprite2D2.visible = true
 	for i in 10:
 		await get_tree().create_timer(0.1).timeout
+		$quad_master/Sprite2D.visible = false
+		$quad_master/Sprite2D2.visible = false
 		$"AnimatedSprite2D/game status".text = selected_direction
 		await get_tree().create_timer(0.1).timeout
 		$"AnimatedSprite2D/game status".text = ""
+		$quad_master/Sprite2D.visible = true
+		$quad_master/Sprite2D2.visible = true
+	
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	isPlayerInArea = false
