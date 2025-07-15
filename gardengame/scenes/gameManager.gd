@@ -3,12 +3,14 @@ extends Node2D
 	"res://scenes/squash_enemy.tscn" : 2,
 	"res://scenes/circle_enemy.tscn" : 1
 }
-@export var amount_of_gameshow = 30
+@export var big_guys = {
+	"res://scenes/game_show_guy.tscn" : 30,
+	"res://scenes/guilt_guy.tscn" : 60
+}
 @export var difficulty = 1 #general difficulty tweaking
 var curr_enemy_waves = []
 @export var wave_cooldown = 5.0
 @export var enemy_speed_mod = 1
-@export var big_guy_frequency = 30
 var i = 0
 var diag_enemy_spawns = [Vector2(64,-20),
 Vector2(466,-20),
@@ -26,6 +28,7 @@ var player
 var shreader
 var noise = 0.0 #1 = max noise
 func _ready() -> void:
+	$speakertimer.wait_time = 20
 	GlobalScript.gamemanger = self
 	await get_tree().process_frame
 	board = GlobalScript.board
@@ -33,13 +36,14 @@ func _ready() -> void:
 	$spawnTimer.wait_time = wave_cooldown
 	$spawnTimer.start()
 	await get_tree().create_timer(1).timeout
-	while amount_of_gameshow > 0:
-		if true:
-			await get_tree().create_timer(log(big_guy_frequency+difficulty)*10).timeout
-			var guy = load("res://scenes/game_show_guy.tscn").instantiate()
-			amount_of_gameshow-=1
-			big_guy_frequency*=1.2
-			add_child(guy)
+	for key in big_guys.keys():
+		var time = int(default_enemy_waves[key])
+		match key:
+			"res://scenes/game_show_guy.tscn":
+				game_show_spawning(time)
+			"res://scenes/guilt_guy.tscn":
+				guilt_spawning(time)
+	
 func _game_loop() -> void:
 	for enemy in enemyList:
 		if is_instance_valid(enemy):
@@ -64,6 +68,7 @@ func _spawn_timer_timeout() -> void:
 		enemyList.append(guy_instance)
 
 func _damage_centerpiece(amt: int):
+	$spark.scale/=1.4
 	if not centerpiece == null:
 		centerpiece._deal_damage(amt)
 
@@ -77,6 +82,7 @@ func setup_next_wave():
 	$spawnTimer.wait_time*=0.98
 	
 func _physics_process(delta: float):
+	$spark.rotate(deg_to_rad(-0.002/delta))
 	i+=0.1/delta
 	if noise>1:
 		noise = 0
@@ -89,3 +95,23 @@ func spawn_guy(path:String):
 	guy.global_position = diag_enemy_spawns.pick_random()
 	add_child(guy)
 	
+
+
+func _on_speakertimer_timeout() -> void:
+	if $speaker.visible == true:
+		return
+	$speaker.visible = true
+	$speaker.play("spawn")
+	await get_tree().create_timer(0.8).timeout
+	$speaker.play("idle")
+	for i in 10:
+		noise +=0.02
+		await get_tree().create_timer(0.4).timeout
+	$speaker.visible = false
+
+func game_show_spawning(time : int):
+	await get_tree().create_timer(time/2.5-randf()).timeout
+	while true:
+		await get_tree().create_timer(time*(randf()/2)+1).timeout
+func guilt_spawning(time : int):
+	await get_tree().create_timer(time/2.5-randf()).timeout

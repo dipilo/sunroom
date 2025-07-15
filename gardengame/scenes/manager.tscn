@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bobget6rcwck1"]
+[gd_scene load_steps=19 format=3 uid="uid://bobget6rcwck1"]
 
 [ext_resource type="Script" uid="uid://dgtmrmxiqn7tt" path="res://scenes/gameManager.gd" id="1_bdh1m"]
 [ext_resource type="Texture2D" uid="uid://c6q4ayjx57iyf" path="res://textures/noise_textures/noise1.png" id="2_o1c0c"]
@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://cl8ef8ut4q5sw" path="res://textures/noise_textures/noise4.png" id="5_3ftge"]
 [ext_resource type="Texture2D" uid="uid://dc0d4cbcr4nj6" path="res://textures/noise_textures/noise5.png" id="6_uujcr"]
 [ext_resource type="Texture2D" uid="uid://cva5xuwn2u4ll" path="res://textures/noise_textures/noise6.png" id="7_htctp"]
+[ext_resource type="Texture2D" uid="uid://24raxnjb1j7h" path="res://textures/item_textures/antenna 6.png" id="8_1d0ly"]
+[ext_resource type="Texture2D" uid="uid://152cgvi5wwls" path="res://textures/item_textures/antenmna-4.png.png" id="9_66mhd"]
+[ext_resource type="Texture2D" uid="uid://bw0q51lea0dam" path="res://textures/item_textures/tantnean 7.png" id="9_dp7tt"]
+[ext_resource type="Texture2D" uid="uid://cid7yu7tp3ec2" path="res://textures/item_textures/HNAjitiyjtenna 8.png" id="10_dp7tt"]
+[ext_resource type="Texture2D" uid="uid://dp6763ytjpgod" path="res://textures/item_textures/antenmna-1.png.png" id="11_3yqbw"]
+[ext_resource type="Texture2D" uid="uid://dfgyrkttkpkwr" path="res://textures/item_textures/antenmna-2.png.png" id="12_xd0ga"]
+[ext_resource type="Texture2D" uid="uid://d0027ftqv8asw" path="res://textures/item_textures/antenmna-3.png.png" id="13_q87iy"]
+[ext_resource type="Texture2D" uid="uid://bpi68p1pn3lea" path="res://textures/item_textures/spark.png" id="15_dp7tt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1d0ly"]
 animations = [{
@@ -34,6 +42,46 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1c0c"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("8_1d0ly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dp7tt")
+}, {
+"duration": 3.0,
+"texture": ExtResource("10_dp7tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dp7tt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("11_3yqbw")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_xd0ga")
+}, {
+"duration": 2.0,
+"texture": ExtResource("13_q87iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_66mhd")
+}],
+"loop": true,
+"name": &"spawn",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66mhd"]
+size = Vector2(50.5263, 37.8947)
+
 [node name="manager" type="Node2D"]
 script = ExtResource("1_bdh1m")
 
@@ -50,5 +98,36 @@ position = Vector2(260, 260)
 sprite_frames = SubResource("SpriteFrames_1d0ly")
 autoplay = "default"
 
+[node name="speaker" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(410, 90)
+scale = Vector2(1.58333, 1.58333)
+sprite_frames = SubResource("SpriteFrames_o1c0c")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.302041
+
+[node name="Area2D" type="Area2D" parent="speaker"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="speaker/Area2D"]
+position = Vector2(6.3158, 18.9474)
+shape = SubResource("RectangleShape2D_66mhd")
+
+[node name="speakertimer" type="Timer" parent="."]
+wait_time = 3.535
+autostart = true
+
+[node name="spark" type="Sprite2D" parent="."]
+position = Vector2(260, 260)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_dp7tt")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="timeout" from="gameTimer" to="." method="_game_loop"]
 [connection signal="timeout" from="spawnTimer" to="." method="_spawn_timer_timeout"]
+[connection signal="timeout" from="speakertimer" to="." method="_on_speakertimer_timeout"]

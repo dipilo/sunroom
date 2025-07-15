@@ -1,5 +1,5 @@
 extends Node2D
-@export var health = 5
+@export var health = 3
 func _ready():
 	await get_tree().process_frame
 	await get_tree().process_frame

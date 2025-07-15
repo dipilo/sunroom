@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfwjf7th0lfw2"]
+[gd_scene load_steps=7 format=3 uid="uid://cfwjf7th0lfw2"]
 
 [ext_resource type="PackedScene" uid="uid://brbsxdr0wi7su" path="res://scenes/root_enemy.tscn" id="1_iwjf0"]
 [ext_resource type="Script" uid="uid://dif3wpi7nyaq" path="res://scenes/guilt_guy.gd" id="2_iwpvu"]
@@ -19,18 +19,22 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 5.0,
+"duration": 1.0,
 "texture": ExtResource("3_fh55x")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("4_x5a8d")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 1.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_o2sxd"]
+radius = 32.6497
+
 [node name="guilt_guy" instance=ExtResource("1_iwjf0")]
+collision_layer = 0
 script = ExtResource("2_iwpvu")
 
 [node name="Sprite2D" parent="CollisionShape2D" index="0"]
@@ -38,5 +42,17 @@ visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" index="1"]
 sprite_frames = SubResource("SpriteFrames_ul6u3")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.709782
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+scale = Vector2(0.95, 1.345)
+shape = SubResource("CircleShape2D_o2sxd")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -38,13 +38,13 @@ func play_round():
 	var selected_node = areas.get(selected_direction)
 	$quad_master/Area2D.global_position = selected_node.global_position
 	await get_tree().create_timer(0.5).timeout
-	$"AnimatedSprite2D/game status".text = "Go"
+	$"AnimatedSprite2D/game status".text = "Now"
 	shake(2)
 	await get_tree().create_timer(0.5).timeout
 	$"AnimatedSprite2D/game status".text = ""
 	await get_tree().create_timer(0.5).timeout
 	shake(2)
-	$"AnimatedSprite2D/game status".text = "To"
+	$"AnimatedSprite2D/game status".text = "Go"
 	await get_tree().create_timer(0.5).timeout
 	$"AnimatedSprite2D/game status".text = ""
 	await get_tree().create_timer(1).timeout

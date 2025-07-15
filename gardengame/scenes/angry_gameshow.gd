@@ -12,6 +12,6 @@ func _on_collisioned(area: Area2D) -> void:
 	else:
 		game_manager._damage_centerpiece(damage)
 		await get_tree().create_timer(0.5).timeout
-		game_manager.noise+=0.2
+		game_manager.noise+=0.1
 		die()
 		

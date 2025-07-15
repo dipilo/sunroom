@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c038x40bbcabo" path="res://background.tscn" id="3_21s54"]
 [ext_resource type="PackedScene" uid="uid://bobget6rcwck1" path="res://scenes/manager.tscn" id="4_ixbtv"]
 [ext_resource type="PackedScene" uid="uid://ojmgwavv6qra" path="res://scenes/shreader.tscn" id="5_ixbtv"]
-[ext_resource type="PackedScene" uid="uid://cmbs0nlgevjcy" path="res://scenes/paper_stack.tscn" id="6_86tsl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsyt3"]
+size = Vector2(540, 20)
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,8 +21,44 @@ position = Vector2(240, 240)
 
 [node name="manager" parent="." instance=ExtResource("4_ixbtv")]
 
-[node name="Shreader" parent="." instance=ExtResource("5_ixbtv")]
-position = Vector2(730, 270)
+[node name="StaticBody2D" type="StaticBody2D" parent="manager"]
+position = Vector2(0, 1)
+collision_layer = 8
+collision_mask = 0
 
-[node name="Paper_Stack" parent="." instance=ExtResource("6_86tsl")]
-position = Vector2(680, 280)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="manager/StaticBody2D"]
+position = Vector2(260, -10)
+shape = SubResource("RectangleShape2D_jsyt3")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="manager"]
+position = Vector2(0, 1)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="manager/StaticBody2D2"]
+position = Vector2(260, 530)
+shape = SubResource("RectangleShape2D_jsyt3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="manager"]
+position = Vector2(0, 1)
+rotation = 1.5708
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="manager/StaticBody2D3"]
+position = Vector2(260, 10)
+shape = SubResource("RectangleShape2D_jsyt3")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="manager"]
+position = Vector2(0, 1)
+rotation = -3.14159
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="manager/StaticBody2D4"]
+position = Vector2(-530, -260)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_jsyt3")
+
+[node name="Shreader" parent="." instance=ExtResource("5_ixbtv")]
+position = Vector2(390, 320)

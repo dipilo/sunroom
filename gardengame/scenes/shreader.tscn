@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ojmgwavv6qra"]
+[gd_scene load_steps=10 format=3 uid="uid://ojmgwavv6qra"]
 
 [ext_resource type="Script" uid="uid://tigx0bmxb0ah" path="res://scenes/shreader.gd" id="1_dd4i2"]
 [ext_resource type="Texture2D" uid="uid://co5uh63lepfer" path="res://textures/item_textures/animated paper shredder down.png" id="2_8uf5k"]
 [ext_resource type="Texture2D" uid="uid://cywnmbmwpkkha" path="res://textures/item_textures/animated paper shredder up.png" id="3_6sky1"]
 [ext_resource type="Texture2D" uid="uid://coi5y3mcvd08h" path="res://textures/item_textures/idle paper shredder.png" id="4_8uf5k"]
+[ext_resource type="Texture2D" uid="uid://dafbw880m6kv6" path="res://textures/item_textures/paper.png" id="5_6sky1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ixbtv"]
 radius = 10.2564
@@ -30,10 +31,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uf5k"]
+
+[sub_resource type="Curve" id="Curve_6nerf"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Shreader" type="Node2D"]
 script = ExtResource("1_dd4i2")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 20)
 scale = Vector2(1.5, 1.5)
 collision_layer = 0
 collision_mask = 4
@@ -44,9 +53,41 @@ shape = SubResource("CircleShape2D_ixbtv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 51
-position = Vector2(3.38813e-21, 3.38813e-21)
+position = Vector2(2.01948e-28, 2.01948e-28)
 scale = Vector2(0.625, 0.625)
 sprite_frames = SubResource("SpriteFrames_lwkd3")
 animation = &"idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_8uf5k")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.380392)
+position = Vector2(-10, 0)
+amount = 5
+texture = ExtResource("5_6sky1")
+lifetime = 2.0
+lifetime_randomness = 0.06
+emission_shape = 2
+emission_sphere_radius = 27.45
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 98)
+angular_velocity_min = -45.0
+angular_velocity_max = 45.0
+orbit_velocity_max = 0.5
+damping_max = 1.0
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_6nerf")
 
 [connection signal="area_entered" from="Area2D" to="." method="_shreader_collided_with"]

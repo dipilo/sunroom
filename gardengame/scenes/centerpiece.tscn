@@ -35,7 +35,7 @@ shape = SubResource("RectangleShape2D_rpi3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 20
-position = Vector2(24, 24)
+position = Vector2(21, 19)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_pu2pc")
 autoplay = "default"

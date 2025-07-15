@@ -10,6 +10,8 @@ func _ready():
 			$"game status".text = "You Win! Play Again?"
 		3:
 			$"game status".text = "You Lose! Play Again?"
+		4:
+			$"game status".text = "CONSUMED BY GUILT"
 
 
 func _enter_lvl1() -> void:
