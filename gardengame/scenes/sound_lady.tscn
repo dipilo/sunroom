@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ixem1apfq3y"]
+
+[ext_resource type="PackedScene" uid="uid://gdwevyurdoux" path="res://scenes/angry_gameshow.tscn" id="1_xyxqj"]
+[ext_resource type="Texture2D" uid="uid://c57vm0eof020d" path="res://textures/item_textures/SoundWomanAnim1.png" id="2_q4iww"]
+
+[node name="soundLady" instance=ExtResource("1_xyxqj")]
+damage = 1
+
+[node name="Sprite2D" parent="CollisionShape2D" index="0"]
+visible = true
+scale = Vector2(1, 1)
+texture = ExtResource("2_q4iww")
+
+[node name="AnimatedSprite2D" parent="CollisionShape2D" index="1"]
+visible = false

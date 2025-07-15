@@ -31,6 +31,7 @@ size = Vector2(20, 38.0952)
 
 [node name="angry_gameshow" instance=ExtResource("1_sjocy")]
 script = ExtResource("2_lpviw")
+damage = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_rvucu")

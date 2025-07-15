@@ -10,6 +10,8 @@ func _ready():
 func get_input():
 	var input_direction = Input.get_vector("direction_left", "direction_right", "direction_up", "direction_down")
 	velocity = input_direction * speed
+	if not game_manager == null:
+		game_manager.noise += 0.01 * input_direction.length()
 
 func _physics_process(delta):
 	get_input()

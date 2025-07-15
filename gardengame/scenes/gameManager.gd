@@ -79,12 +79,13 @@ func setup_next_wave():
 func _physics_process(delta: float):
 	i+=0.1/delta
 	if noise>1:
-		noise = 1
+		noise = 0
+		spawn_guy("res://scenes/sound_lady.tscn")
 	noise*=0.999
 	$noiseNode/Sprite2D.scale = Vector2(1.5-(noise/2),1.5-(noise/2))+(Vector2(sin(i),sin(i))/1000)
 	$noiseNode/Sprite2D.self_modulate.a = noise
-func _spawn_angry_gameshow():
-	var guy = load("res://scenes/angry_gameshow.tscn").instantiate()
+func spawn_guy(path:String):
+	var guy = load(path).instantiate()
 	guy.global_position = diag_enemy_spawns.pick_random()
 	add_child(guy)
 	

@@ -16,7 +16,7 @@ func _ready():
 			await get_tree().create_timer(0.15).timeout
 			position.y-=10
 			$"AnimatedSprite2D/game status".position.y+=5
-		GlobalScript.gamemanger._spawn_angry_gameshow()
+		GlobalScript.gamemanger.spawn_guy("res://scenes/angry_gameshow.tscn")
 		self.queue_free()
 	else:
 		for i in 50:
