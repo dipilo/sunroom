@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfwjf7th0lfw2"]
+
+[ext_resource type="PackedScene" uid="uid://brbsxdr0wi7su" path="res://scenes/root_enemy.tscn" id="1_iwjf0"]
+[ext_resource type="Script" uid="uid://dif3wpi7nyaq" path="res://scenes/guilt_guy.gd" id="2_iwpvu"]
+[ext_resource type="Texture2D" uid="uid://bknhbxypf1j12" path="res://textures/item_textures/spine is coming merge is here-1.png(1).png" id="3_fh55x"]
+[ext_resource type="Texture2D" uid="uid://fr5yt7hxj674" path="res://textures/item_textures/spine is coming merge is here-2.png.png" id="4_x5a8d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ul6u3"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("3_fh55x")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_x5a8d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("3_fh55x")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_x5a8d")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="guilt_guy" instance=ExtResource("1_iwjf0")]
+script = ExtResource("2_iwpvu")
+
+[node name="Sprite2D" parent="CollisionShape2D" index="0"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" index="1"]
+sprite_frames = SubResource("SpriteFrames_ul6u3")
+animation = &"idle"
+autoplay = "idle"
