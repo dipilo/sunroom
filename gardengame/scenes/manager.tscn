@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bobget6rcwck1"]
+[gd_scene load_steps=9 format=3 uid="uid://bobget6rcwck1"]
 
 [ext_resource type="Script" uid="uid://dgtmrmxiqn7tt" path="res://scenes/gameManager.gd" id="1_bdh1m"]
+[ext_resource type="Texture2D" uid="uid://c6q4ayjx57iyf" path="res://textures/noise_textures/noise1.png" id="2_o1c0c"]
+[ext_resource type="Texture2D" uid="uid://bhw2hokj4wgj" path="res://textures/noise_textures/noise2.png" id="3_j5tnm"]
+[ext_resource type="Texture2D" uid="uid://1nf580rg2ivw" path="res://textures/noise_textures/noise3.png" id="4_xiihq"]
+[ext_resource type="Texture2D" uid="uid://cl8ef8ut4q5sw" path="res://textures/noise_textures/noise4.png" id="5_3ftge"]
+[ext_resource type="Texture2D" uid="uid://dc0d4cbcr4nj6" path="res://textures/noise_textures/noise5.png" id="6_uujcr"]
+[ext_resource type="Texture2D" uid="uid://cva5xuwn2u4ll" path="res://textures/noise_textures/noise6.png" id="7_htctp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1d0ly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o1c0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j5tnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xiihq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3ftge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uujcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_htctp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
 
 [node name="manager" type="Node2D"]
 script = ExtResource("1_bdh1m")
@@ -11,8 +43,12 @@ autostart = true
 
 [node name="spawnTimer" type="Timer" parent="."]
 
-[node name="bigGuyTimer" type="Timer" parent="."]
+[node name="noiseNode" type="Node2D" parent="."]
+position = Vector2(260, 260)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="noiseNode"]
+sprite_frames = SubResource("SpriteFrames_1d0ly")
+autoplay = "default"
 
 [connection signal="timeout" from="gameTimer" to="." method="_game_loop"]
 [connection signal="timeout" from="spawnTimer" to="." method="_spawn_timer_timeout"]
-[connection signal="timeout" from="bigGuyTimer" to="." method="_big_guy_timer_timeout"]

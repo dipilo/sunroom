@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr0aqddft6ngh"
-path="res://.godot/imported/GameshowAttack.png-a4513351297cfa826928cf4bf988fed8.ctex"
+uid="uid://c6q4ayjx57iyf"
+path="res://.godot/imported/noise1.png-e4c0024dc4663126cfbf1ab62653fdbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/gameshow_textures/GameshowAttack.png"
-dest_files=["res://.godot/imported/GameshowAttack.png-a4513351297cfa826928cf4bf988fed8.ctex"]
+source_file="res://textures/noise_textures/noise1.png"
+dest_files=["res://.godot/imported/noise1.png-e4c0024dc4663126cfbf1ab62653fdbc.ctex"]
 
 [params]
 

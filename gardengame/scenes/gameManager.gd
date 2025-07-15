@@ -3,14 +3,13 @@ extends Node2D
 	"res://scenes/squash_enemy.tscn" : 2,
 	"res://scenes/circle_enemy.tscn" : 1
 }
-@export var big_guy_spawns = [
-	'res://scenes/root_big_guy.tscn',
-]
+@export var amount_of_gameshow = 30
 @export var difficulty = 1 #general difficulty tweaking
 var curr_enemy_waves = []
 @export var wave_cooldown = 5.0
 @export var enemy_speed_mod = 1
-@export var big_guy_spawn_time = 30
+@export var big_guy_frequency = 30
+var i = 0
 var diag_enemy_spawns = [Vector2(64,-20),
 Vector2(466,-20),
 Vector2(64,540),
@@ -25,6 +24,7 @@ var board
 var centerpiece
 var player
 var shreader
+var noise = 0.0 #1 = max noise
 func _ready() -> void:
 	GlobalScript.gamemanger = self
 	await get_tree().process_frame
@@ -32,13 +32,21 @@ func _ready() -> void:
 	setup_next_wave()
 	$spawnTimer.wait_time = wave_cooldown
 	$spawnTimer.start()
+	await get_tree().create_timer(1).timeout
+	while amount_of_gameshow > 0:
+		if true:
+			await get_tree().create_timer(log(big_guy_frequency+difficulty)*10).timeout
+			var guy = load("res://scenes/game_show_guy.tscn").instantiate()
+			amount_of_gameshow-=1
+			big_guy_frequency*=1.2
+			add_child(guy)
 func _game_loop() -> void:
 	for enemy in enemyList:
 		if is_instance_valid(enemy):
 			enemy._update()
 
 func _spawn_timer_timeout() -> void:
-	await get_tree().create_timer(randf()).timeout #wait for between 0 and 0.99999 seconds, to add some randomness
+	await get_tree().create_timer(randf()).timeout #wait for between 0 and 1 seconds, to add some randomness
 
 	if curr_enemy_waves.size() == 0:
 		setup_next_wave()
@@ -68,7 +76,15 @@ func setup_next_wave():
 	curr_enemy_waves.shuffle()
 	$spawnTimer.wait_time*=0.98
 	
-
-
-func _big_guy_timer_timeout() -> void:
-	big_guy_spawns.pick_random()
+func _physics_process(delta: float):
+	i+=0.1/delta
+	if noise>1:
+		noise = 1
+	noise*=0.999
+	$noiseNode/Sprite2D.scale = Vector2(1.5-(noise/2),1.5-(noise/2))+(Vector2(sin(i),sin(i))/1000)
+	$noiseNode/Sprite2D.self_modulate.a = noise
+func _spawn_angry_gameshow():
+	var guy = load("res://scenes/angry_gameshow.tscn").instantiate()
+	guy.global_position = diag_enemy_spawns.pick_random()
+	add_child(guy)
+	

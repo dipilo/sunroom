@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxtkxaebc3pmy"]
+[gd_scene load_steps=7 format=3 uid="uid://dxtkxaebc3pmy"]
 
 [ext_resource type="PackedScene" uid="uid://cpre4pnoft1a7" path="res://scenes/player.tscn" id="1_hy033"]
 [ext_resource type="PackedScene" uid="uid://dfe7stefx36it" path="res://scenes/centerpiece.tscn" id="2_4y0t7"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bobget6rcwck1" path="res://scenes/manager.tscn" id="4_ixbtv"]
 [ext_resource type="PackedScene" uid="uid://ojmgwavv6qra" path="res://scenes/shreader.tscn" id="5_ixbtv"]
 [ext_resource type="PackedScene" uid="uid://cmbs0nlgevjcy" path="res://scenes/paper_stack.tscn" id="6_86tsl"]
-[ext_resource type="PackedScene" uid="uid://c1wvjpwqyi56q" path="res://scenes/game_show_guy.tscn" id="7_86tsl"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,9 +20,7 @@ position = Vector2(240, 240)
 [node name="manager" parent="." instance=ExtResource("4_ixbtv")]
 
 [node name="Shreader" parent="." instance=ExtResource("5_ixbtv")]
-position = Vector2(440, 260)
+position = Vector2(730, 270)
 
 [node name="Paper_Stack" parent="." instance=ExtResource("6_86tsl")]
-position = Vector2(390, 270)
-
-[node name="GameShowGuy" parent="." instance=ExtResource("7_86tsl")]
+position = Vector2(680, 280)

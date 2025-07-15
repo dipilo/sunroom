@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1wvjpwqyi56q"]
+[gd_scene load_steps=9 format=3 uid="uid://bty4e3qtbvk3d"]
 
 [ext_resource type="Script" uid="uid://c4lll8kqh5apo" path="res://scenes/game_show_guy.gd" id="1_sbeve"]
-[ext_resource type="Texture2D" uid="uid://ct5jxirbid5at" path="res://textures/gameshow_textures/GameshowAnim1.png" id="1_spbwt"]
-[ext_resource type="Texture2D" uid="uid://cpc6wglspwcqc" path="res://textures/gameshow_textures/GameshowAnim2.png" id="2_4t3hq"]
+[ext_resource type="Texture2D" uid="uid://befxesay5vc3i" path="res://textures/gameshow_textures/GameshowAnim1.png" id="1_spbwt"]
+[ext_resource type="Texture2D" uid="uid://yll4bee5w61x" path="res://textures/gameshow_textures/GameshowAnim2.png" id="2_4t3hq"]
 [ext_resource type="Texture2D" uid="uid://cy430m0mxgwd5" path="res://textures/item_textures/lazer.png" id="4_1uaos"]
+[ext_resource type="Texture2D" uid="uid://c0rt5yx7lyjcc" path="res://textures/gameshow_textures/GameshowDissapointed.png" id="4_u3rv5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1uaos"]
 animations = [{
@@ -17,6 +18,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_u3rv5")
+}],
+"loop": true,
+"name": &"failure",
+"speed": 5.0
 }]
 
 [sub_resource type="Theme" id="Theme_ciuvd"]
@@ -28,18 +37,19 @@ script = ExtResource("1_sbeve")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4095
-position = Vector2(100, 200)
-scale = Vector2(4.9775, 4.9775)
+position = Vector2(90, 150)
+scale = Vector2(2.76563, 2.76563)
 sprite_frames = SubResource("SpriteFrames_1uaos")
+animation = &"failure"
 autoplay = "default"
-frame_progress = 0.776764
 
 [node name="game status" type="Label" parent="AnimatedSprite2D"]
 z_index = 4096
-offset_left = -20.0
-offset_top = -6.0
-offset_right = 84.0
-offset_bottom = 26.0
+offset_left = -14.0
+offset_top = 14.0
+offset_right = 92.0
+offset_bottom = 46.0
+scale = Vector2(1.42783, 1.42783)
 theme = SubResource("Theme_ciuvd")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -65,9 +75,11 @@ scale = Vector2(0.401808, 0.100452)
 texture = ExtResource("4_1uaos")
 
 [node name="Area2D" type="Area2D" parent="quad_master"]
-position = Vector2(-40.1808, 12.0542)
+position = Vector2(-100.452, 12.0542)
 rotation = 0.785398
 scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="quad_master/Area2D"]
 shape = SubResource("RectangleShape2D_1uaos")

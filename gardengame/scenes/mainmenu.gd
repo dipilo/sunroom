@@ -5,7 +5,7 @@ func _ready():
 		0:
 			$"game status".text = "Select Level"
 		1:
-			$"game status".text = "this should never happen"
+			$"game status".text = "this text should never appear. If you see this, something has gone wrong"
 		2:
 			$"game status".text = "You Win! Play Again?"
 		3:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv3xlqnleaxr7"
-path="res://.godot/imported/GameshowFalling.png-ee2aad174207e39604acdf1383529c2e.ctex"
+uid="uid://c0rt5yx7lyjcc"
+path="res://.godot/imported/GameshowDissapointed.png-cc5ffc63a82647bd95c9efd2cc4481f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/gameshow_textures/GameshowFalling.png"
-dest_files=["res://.godot/imported/GameshowFalling.png-ee2aad174207e39604acdf1383529c2e.ctex"]
+source_file="res://textures/gameshow_textures/GameshowDissapointed.png"
+dest_files=["res://.godot/imported/GameshowDissapointed.png-cc5ffc63a82647bd95c9efd2cc4481f1.ctex"]
 
 [params]
 
