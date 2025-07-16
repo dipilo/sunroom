@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dafbw880m6kv6" path="res://textures/item_textures/paper.png" id="5_6sky1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ixbtv"]
-radius = 10.2564
+radius = 5.12821
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lwkd3"]
 animations = [{
