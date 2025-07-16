@@ -12,6 +12,7 @@ default_enemy_waves = {
 "res://scenes/circle_enemy.tscn": 1,
 "res://scenes/squash_enemy.tscn": 5
 }
+do_speaker = false
 big_guys = {
 "res://scenes/game_show_guy.tscn": 40
 }

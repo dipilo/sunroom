@@ -74,7 +74,7 @@ func initate_level_brief(lvl_path : String):
 
 func _on_enter_level_button_down() -> void:
 	GlobalScript.game_state = 1
-	get_tree().change_scene_to_file("res://scenes/battlefield.tscn")
+	get_tree().change_scene_to_file(selected_lvl_path)
 
 
 func _on_cancel_button_down() -> void:

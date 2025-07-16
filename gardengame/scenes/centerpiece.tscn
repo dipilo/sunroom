@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfe7stefx36it"]
+[gd_scene load_steps=7 format=3 uid="uid://dfe7stefx36it"]
 
 [ext_resource type="Script" uid="uid://dqxqkdrlc5edc" path="res://scenes/centerpiece.gd" id="1_8r8u5"]
 [ext_resource type="Texture2D" uid="uid://d2x822vcater0" path="res://textures/player_textures/bed1.png" id="2_lvikp"]
 [ext_resource type="Texture2D" uid="uid://dir84oph27jv2" path="res://textures/player_textures/bed2.png" id="3_4ht6q"]
+[ext_resource type="Texture2D" uid="uid://ckmk7btsf0ump" path="res://textures/item_textures/many z.png" id="4_4ht6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpi3w"]
 size = Vector2(80, 80)
@@ -44,3 +45,21 @@ frame_progress = 0.660477
 [node name="center" type="Node2D" parent="AnimatedSprite2D"]
 position = Vector2(20, 20)
 scale = Vector2(0.025, 0.025)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+z_index = 50
+position = Vector2(-28, -54)
+texture = ExtResource("4_4ht6q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+z_index = 50
+position = Vector2(22, -54)
+texture = ExtResource("4_4ht6q")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+z_index = 50
+position = Vector2(-2, -60)
+texture = ExtResource("4_4ht6q")

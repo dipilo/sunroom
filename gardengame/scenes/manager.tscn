@@ -107,7 +107,7 @@ scale = Vector2(1.58333, 1.58333)
 sprite_frames = SubResource("SpriteFrames_o1c0c")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.497375
+frame_progress = 0.507566
 
 [node name="Area2D" type="Area2D" parent="speaker"]
 
@@ -120,6 +120,7 @@ wait_time = 3.535
 autostart = true
 
 [node name="spark" type="Sprite2D" parent="."]
+modulate = Color(0.146667, 0.710324, 0, 1)
 position = Vector2(260, 260)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("15_dp7tt")

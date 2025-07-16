@@ -17,6 +17,13 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	$CollisionShape2D/AnimatedSprite2D.flip_h = (velocity.x>0)
+	if velocity.length()<10:
+		$CollisionShape2D/AnimatedSprite2D.play("idle")
+	elif abs(velocity.y)>abs(velocity.x):
+		$CollisionShape2D/AnimatedSprite2D.play("walk_front")
+	else:
+		$CollisionShape2D/AnimatedSprite2D.play("walk_side")
 func _paper(new: bool):
 	has_paper = new
 	#$paper.visible = new

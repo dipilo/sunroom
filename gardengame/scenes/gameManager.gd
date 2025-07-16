@@ -4,6 +4,7 @@ extends Node2D
 	"res://scenes/circle_enemy.tscn" : 3,
 	"res://scenes/Inverter_Enemy.tscn" : 1,
 }
+@export var do_speaker = true
 @export var big_guys = {
 	"res://scenes/game_show_guy.tscn" : 40,
 	"res://scenes/guilt_guy.tscn" : 80
@@ -24,7 +25,6 @@ Vector2(540,466),
 ]
 var inverterspawns = [Vector2(128,100),
 Vector2(100,128),
-Vector2(300,80),
 Vector2(80,300),
 Vector2(500,300),
 Vector2(200,500)
@@ -79,9 +79,15 @@ func _spawn_timer_timeout() -> void:
 		enemyList.append(guy_instance)
 
 func _damage_centerpiece(amt: int):
-	$spark.scale/=1.4
 	if not centerpiece == null:
 		centerpiece._deal_damage(amt)
+		$spark.scale/=1.4
+		match centerpiece.health:
+			2:
+				$spark.modulate = Color.BLUE_VIOLET
+			1:
+				$spark.modulate = Color.RED
+		
 
 func setup_next_wave():
 	curr_enemy_waves = []
@@ -110,7 +116,7 @@ func spawn_guy(path:String):
 
 
 func _on_speakertimer_timeout() -> void:
-	if $speaker.visible == true:
+	if $speaker.visible == true or not do_speaker:
 		return
 	$speaker.visible = true
 	$speaker.play("spawn")

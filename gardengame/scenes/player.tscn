@@ -1,13 +1,56 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpre4pnoft1a7"]
+[gd_scene load_steps=13 format=3 uid="uid://cpre4pnoft1a7"]
 
 [ext_resource type="Script" uid="uid://028cuny43ms" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dgldqqqph5eoe" path="res://icon.svg" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://cdoxjqu4g6k1i" path="res://textures/item_textures/the-image-is-of-a-white-smoke-cloud-with-a-lot-of-white-smoke-png.webp" id="2_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://ryiamtb4fuo1" path="res://textures/item_textures/Paper_JE2_BE2.webp" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://b57mrfo476yj6" path="res://textures/player_textures/girl1(idle 1).png" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://b5qcoiy0u55n4" path="res://textures/player_textures/girl2(idle 2).png" id="4_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://cdtc86ypxa5e1" path="res://textures/player_textures/girl3(front walking anim 1).png" id="5_smehm"]
+[ext_resource type="Texture2D" uid="uid://qh0nmse547cc" path="res://textures/player_textures/girl 4(left walking anim 1).png" id="6_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://bs187woaomrxc" path="res://textures/player_textures/girl 5(left walking anim 2).png" id="7_y4r1p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sh265"]
-radius = 20.0
+radius = 12.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qlg0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tuyoq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_smehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tuyoq")
+}],
+"loop": true,
+"name": &"walk_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ur7pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_y4r1p")
+}],
+"loop": true,
+"name": &"walk_side",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(7.61905, 13.3333)
 
 [node name="Player" type="Node2D"]
 
@@ -16,13 +59,45 @@ position = Vector2(20, 20)
 collision_mask = 9
 script = ExtResource("1_onrkg")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CharacterBody2D"]
+modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(0, 14)
+scale = Vector2(0.416667, 0.416667)
+amount = 40
+texture = ExtResource("2_ur7pv")
+lifetime = 0.5
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 7.82
+direction = Vector2(0, -1)
+spread = 104.66
+gravity = Vector2(0, -50)
+initial_velocity_max = 15.0
+radial_accel_max = 35.5
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_sh265")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D"]
+visible = false
 z_index = 51
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("2_i3pqv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/CollisionShape2D"]
+modulate = Color(1, 1, 1, 0.721569)
+z_index = 52
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(0.416667, 0.416667)
+sprite_frames = SubResource("SpriteFrames_qhqgy")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="PlayerArea" type="Area2D" parent="CharacterBody2D"]
 scale = Vector2(2.1, 2.1)
@@ -30,6 +105,8 @@ collision_layer = 7
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/PlayerArea"]
+position = Vector2(0, 9.53674e-07)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="paper" type="Sprite2D" parent="CharacterBody2D"]
