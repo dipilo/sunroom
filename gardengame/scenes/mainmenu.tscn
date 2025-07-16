@@ -13,14 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5mbse")
 
-[node name="lvl1button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 210.0
-offset_top = 260.0
-offset_right = 310.0
-offset_bottom = 291.0
-text = "Play Level 1"
-
 [node name="game status" type="Label" parent="."]
 z_index = 4096
 layout_mode = 0
@@ -38,4 +30,25 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="button_down" from="lvl1button" to="." method="_enter_lvl1"]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 240.0
+offset_right = 298.0
+offset_bottom = 280.0
+
+[node name="lvl1button" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Play Level 1"
+
+[node name="lvl1button2" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Play Level 2"
+
+[node name="lvl1button3" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Play Level 3"
+
+[connection signal="button_down" from="GridContainer/lvl1button" to="." method="_enter_lvl1"]
+[connection signal="button_down" from="GridContainer/lvl1button2" to="." method="_enter_lvl2"]
+[connection signal="button_down" from="GridContainer/lvl1button3" to="." method="_enter_lvl3"]

@@ -9,9 +9,12 @@ color = Color(0.0504599, 0.145352, 0.0855614, 1)
 
 [node name="manager" parent="." index="3"]
 default_enemy_waves = {
-"res://scenes/circle_enemy.tscn": 3,
-"res://scenes/squash_enemy.tscn": 6
+"res://scenes/circle_enemy.tscn": 1,
+"res://scenes/squash_enemy.tscn": 5
 }
 big_guys = {
 "res://scenes/game_show_guy.tscn": 40
 }
+
+[node name="Shreader" parent="." index="4"]
+seconds_required = 50.0

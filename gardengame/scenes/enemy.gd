@@ -24,9 +24,7 @@ func _update() ->void:
 
 
 func pathfindToVector(target: Vector2) -> Vector2:
-	
 	var best_vector = (target - global_position).normalized()
-	
 	var random_angle = randf_range(-random_movement,random_movement)
 	var rotated_direction = best_vector.rotated(deg_to_rad(random_angle))
 	var random_magnitude = randf_range(0.5, 1)

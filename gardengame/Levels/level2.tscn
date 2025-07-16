@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq5glcqfqqfjh"]
+
+[ext_resource type="PackedScene" uid="uid://dxtkxaebc3pmy" path="res://scenes/battlefield.tscn" id="1_24phs"]
+
+[node name="Node2D" instance=ExtResource("1_24phs")]
+
+[node name="background" parent="." index="2"]
+color = Color(0.0748275, 2.07925e-05, 0.307437, 1)
+
+[node name="manager" parent="." index="3"]
+position = Vector2(-1, 0)
+big_guys = {
+"res://scenes/game_show_guy.tscn": 40
+}
+
+[node name="Shreader" parent="." index="4"]
+noise_per_second = 0.025

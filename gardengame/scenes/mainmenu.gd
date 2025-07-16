@@ -17,3 +17,11 @@ func _ready():
 func _enter_lvl1() -> void:
 	GlobalScript.game_state = 1
 	get_tree().change_scene_to_file("res://scenes/battlefield.tscn")
+
+
+func _enter_lvl2() -> void:
+	pass # Replace with function body.
+
+
+func _enter_lvl3() -> void:
+	pass # Replace with function body.
