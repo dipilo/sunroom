@@ -95,17 +95,19 @@ autostart = true
 position = Vector2(260, 260)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="noiseNode"]
+z_index = 4096
 sprite_frames = SubResource("SpriteFrames_1d0ly")
 autoplay = "default"
 
 [node name="speaker" type="AnimatedSprite2D" parent="."]
 visible = false
+z_index = 4096
 position = Vector2(410, 90)
 scale = Vector2(1.58333, 1.58333)
 sprite_frames = SubResource("SpriteFrames_o1c0c")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.302041
+frame_progress = 0.0107292
 
 [node name="Area2D" type="Area2D" parent="speaker"]
 

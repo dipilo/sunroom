@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://b08xumjd21mk0"]
+
+[ext_resource type="PackedScene" uid="uid://brbsxdr0wi7su" path="res://scenes/root_enemy.tscn" id="1_dfm6s"]
+[ext_resource type="Script" uid="uid://bbavhqbjr2qny" path="res://scenes/inverter_enemy.gd" id="2_6davw"]
+[ext_resource type="Texture2D" uid="uid://35h8wovkdfqm" path="res://textures/item_textures/hand1.png" id="3_1jo03"]
+[ext_resource type="Texture2D" uid="uid://funhsjjnun8n" path="res://textures/item_textures/hand2.png" id="4_ayg1i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ovx4n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1jo03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ayg1i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1jo03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ayg1i")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4iwj"]
+radius = 13.4687
+
+[node name="rootEnemy" instance=ExtResource("1_dfm6s")]
+script = ExtResource("2_6davw")
+
+[node name="Sprite2D" parent="CollisionShape2D" index="0"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" index="1"]
+position = Vector2(2, -12)
+sprite_frames = SubResource("SpriteFrames_ovx4n")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.895222
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+scale = Vector2(2.1, 2.1)
+shape = SubResource("CircleShape2D_s4iwj")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

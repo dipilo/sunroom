@@ -1,7 +1,9 @@
 extends Node2D
 @export var default_enemy_waves = { #key is number of times the enemy should spawn each "cycle"
 	"res://scenes/squash_enemy.tscn" : 2,
-	"res://scenes/circle_enemy.tscn" : 1
+	"res://scenes/circle_enemy.tscn" : 1,
+	#"res://scenes/shadow_enemy.tscn" : 1,
+	"res://scenes/Inverter_Enemy.tscn" : 1
 }
 @export var big_guys = {
 	"res://scenes/game_show_guy.tscn" : 30,
@@ -21,6 +23,13 @@ Vector2(-20,466),
 Vector2(540,64),
 Vector2(540,466),
 ]
+var inverterspawns = [Vector2(128,100),
+Vector2(100,128),
+Vector2(300,80),
+Vector2(80,300),
+Vector2(500,300),
+Vector2(200,500)
+]
 var enemyList = []
 var board
 var centerpiece
@@ -37,7 +46,8 @@ func _ready() -> void:
 	$spawnTimer.start()
 	await get_tree().create_timer(1).timeout
 	for key in big_guys.keys():
-		var time = int(default_enemy_waves[key])
+		print(key)
+		var time = int(big_guys[key])
 		match key:
 			"res://scenes/game_show_guy.tscn":
 				game_show_spawning(time)
@@ -64,6 +74,8 @@ func _spawn_timer_timeout() -> void:
 	for i in count:
 		var guy_instance = load(curr_guy).instantiate()
 		guy_instance.global_position = diag_enemy_spawns.pick_random()
+		if curr_guy == "res://scenes/Inverter_Enemy.tscn":
+			guy_instance.global_position = inverterspawns.pick_random()
 		add_child(guy_instance)
 		enemyList.append(guy_instance)
 
@@ -89,7 +101,7 @@ func _physics_process(delta: float):
 		spawn_guy("res://scenes/sound_lady.tscn")
 	noise*=0.999
 	$noiseNode/Sprite2D.scale = Vector2(1.5-(noise/2),1.5-(noise/2))+(Vector2(sin(i),sin(i))/1000)
-	$noiseNode/Sprite2D.self_modulate.a = noise
+	$noiseNode/Sprite2D.self_modulate.a = noise*.70
 func spawn_guy(path:String):
 	var guy = load(path).instantiate()
 	guy.global_position = diag_enemy_spawns.pick_random()
