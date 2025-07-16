@@ -1,13 +1,12 @@
 extends Node2D
 @export var default_enemy_waves = { #key is number of times the enemy should spawn each "cycle"
-	"res://scenes/squash_enemy.tscn" : 2,
-	"res://scenes/circle_enemy.tscn" : 1,
-	#"res://scenes/shadow_enemy.tscn" : 1,
-	"res://scenes/Inverter_Enemy.tscn" : 1
+	"res://scenes/squash_enemy.tscn" : 6,
+	"res://scenes/circle_enemy.tscn" : 3,
+	"res://scenes/Inverter_Enemy.tscn" : 1,
 }
 @export var big_guys = {
-	"res://scenes/game_show_guy.tscn" : 30,
-	"res://scenes/guilt_guy.tscn" : 60
+	"res://scenes/game_show_guy.tscn" : 40,
+	"res://scenes/guilt_guy.tscn" : 80
 }
 @export var difficulty = 1 #general difficulty tweaking
 var curr_enemy_waves = []
@@ -99,12 +98,13 @@ func _physics_process(delta: float):
 	if noise>1:
 		noise = 0
 		spawn_guy("res://scenes/sound_lady.tscn")
-	noise*=0.999
+	noise*=0.9994
 	$noiseNode/Sprite2D.scale = Vector2(1.5-(noise/2),1.5-(noise/2))+(Vector2(sin(i),sin(i))/1000)
 	$noiseNode/Sprite2D.self_modulate.a = noise*.70
 func spawn_guy(path:String):
 	var guy = load(path).instantiate()
-	guy.global_position = diag_enemy_spawns.pick_random()
+	if not path == "res://scenes/game_show_guy.tscn":
+		guy.global_position = diag_enemy_spawns.pick_random()
 	add_child(guy)
 	
 
@@ -124,6 +124,11 @@ func _on_speakertimer_timeout() -> void:
 func game_show_spawning(time : int):
 	await get_tree().create_timer(time/2.5-randf()).timeout
 	while true:
-		await get_tree().create_timer(time*(randf()/2)+1).timeout
+		spawn_guy("res://scenes/game_show_guy.tscn")
+		await get_tree().create_timer(time).timeout
 func guilt_spawning(time : int):
+	
 	await get_tree().create_timer(time/2.5-randf()).timeout
+	while true:
+		spawn_guy("res://scenes/guilt_guy.tscn")
+		await get_tree().create_timer(time).timeout

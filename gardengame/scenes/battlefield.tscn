@@ -18,6 +18,7 @@ position = Vector2(240, 280)
 position = Vector2(240, 240)
 
 [node name="background" parent="." instance=ExtResource("3_21s54")]
+color = Color(0.226562, 0.00369352, 0.199936, 1)
 
 [node name="manager" parent="." instance=ExtResource("4_ixbtv")]
 

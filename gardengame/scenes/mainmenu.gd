@@ -1,5 +1,5 @@
 extends Control
-
+@export var levels = []
 func _ready():
 	match GlobalScript.game_state:
 		0:

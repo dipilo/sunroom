@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c57vm0eof020d" path="res://textures/item_textures/SoundWomanAnim1.png" id="2_q4iww"]
 
 [node name="soundLady" instance=ExtResource("1_xyxqj")]
+shaking = false
 
 [node name="Sprite2D" parent="CollisionShape2D" index="0"]
 visible = true

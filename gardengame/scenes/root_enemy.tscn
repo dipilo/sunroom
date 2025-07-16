@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bbijhmxta4uoc" path="res://scenes/enemy.gd" id="1_pgons"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o2sxd"]
-radius = 9.21954
+radius = 3.60555
 
 [node name="rootEnemy" type="CharacterBody2D"]
 collision_mask = 0

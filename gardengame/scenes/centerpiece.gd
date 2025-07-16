@@ -10,4 +10,5 @@ func _deal_damage(amt: int):
 	print(health)
 	if health == 0:
 		GlobalScript.game_state = 3
-		get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
+		call_deferred("change_scene_to_file","res://scenes/mainmenu.tscn")
+		#get_tree().change_scene_to_file()

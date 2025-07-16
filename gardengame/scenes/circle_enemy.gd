@@ -3,10 +3,10 @@ var center_node = self
 var previous_angle = 0.0
 var accumulated_angle = 0.0
 var full_circle_threshold = 2 * PI
-var time_to_chill = 5
-var time_before_chill = 5
+#var time_to_chill = 5
+#var time_before_chill = 5
 func _init():
-	movement_chance = 0.4
+	movement_chance = 0.3
 func _ready():
 	super._ready()
 	#await get_tree().process_frame
@@ -33,3 +33,10 @@ func get_current_angle() -> float:
 		return 0
 	var to_player = game_manager.player.global_position - center_node.global_position
 	return atan2(to_player.y, to_player.x)
+
+
+func _collide_with_bed(area: Area2D) -> void:
+	game_manager._damage_centerpiece(1)
+	if not get_tree() == null:
+		await get_tree().create_timer(1).timeout
+	global_position = game_manager.diag_enemy_spawns.pick_random()

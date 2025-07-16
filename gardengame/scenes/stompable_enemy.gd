@@ -19,7 +19,8 @@ func die():
 	dead_man_walking = true
 	game_manager.player.speed = 50
 	$CollisionShape2D/mainSprite.play("die")
-	await get_tree().create_timer(0.3).timeout
+	if not get_tree() == null:
+		await get_tree().create_timer(0.3).timeout
 	game_manager.player.speed = 200
 	#await get_tree().create_timer(0.1).timeout
 	super.die()

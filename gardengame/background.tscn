@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://c2qlhwb2l2vgi" path="res://background_generator.gd" id="1_oabld"]
 
 [sub_resource type="Gradient" id="Gradient_oabld"]
-colors = PackedColorArray(0, 0, 0, 1, 0.181994, 0.088864, 0.186854, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_oabld"]
 domain_warp_enabled = true

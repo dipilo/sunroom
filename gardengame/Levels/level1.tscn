@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://qr53rt3s7itm"]
+
+[ext_resource type="PackedScene" uid="uid://dxtkxaebc3pmy" path="res://scenes/battlefield.tscn" id="1_t21ke"]
+
+[node name="Node2D" instance=ExtResource("1_t21ke")]
+
+[node name="background" parent="." index="2"]
+color = Color(0.0504599, 0.145352, 0.0855614, 1)
+
+[node name="manager" parent="." index="3"]
+default_enemy_waves = {
+"res://scenes/circle_enemy.tscn": 3,
+"res://scenes/squash_enemy.tscn": 6
+}
+big_guys = {
+"res://scenes/game_show_guy.tscn": 40
+}
